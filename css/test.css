@@ -1,0 +1,94 @@
+*{margin: 0px; padding:0px; }
+
+/* Галерея */
+.galery {
+    position: relative;
+    height: 300px;
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+/* Левая Кнопка */
+.galeryarrowleft{
+    position: relative;
+    top: 35%;
+    left: 4%;
+    width: 5%;
+    height: 30%;
+    border-radius: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+.galeryarrowleft::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotate(225deg);
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid rgb(0, 0, 0);
+    border-right: 2px solid rgb(0, 0, 0);
+    }
+.galeryarrowleft:hover{     
+        border-color: rgb(160, 156, 156); 
+    }
+    .galeryarrowleft:active{
+        border-color: rgb(1, 1, 1);
+    }    
+
+/* Хранилище картинок */
+.galerystorage{
+    position: relative;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    bottom: 20%;
+}
+.imganimationgalerystorage {
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    }
+    @-webkit-keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+        @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+/* Правая Кнопка */
+.galeryarrowright{
+    position: relative;
+    bottom: 75%;
+    left: 91%;
+    width: 5%;
+    height: 30%;
+    border-radius: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.galeryarrowright::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid rgb(9, 4, 4);
+    border-right: 2px solid rgb(0, 0, 0);
+    }
+    .galeryarrowright:hover{
+        border-color: rgb(160, 156, 156); 
+    }
+    .galeryarrowright:active{
+        border-color: rgb(1, 1, 1); 
+    }    
+    
+
+
