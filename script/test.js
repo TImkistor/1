@@ -1,12 +1,11 @@
 let imgstorage = [{id:0,nameimg:"./img/1.jpg"}, // Хранилище картинок
                   {id:1,nameimg:"./img/2.jpg"},
                   {id:2,nameimg:"./img/3.jpg"},
-                  {id:3,nameimg:"./img/4.jpg"}
 ]
-let imgstorageoldnumber = []
+let imgstorageoldnumber = [] // старые значения массива
 let paddingLeftimg = "4%" // отступы между картинками
 let imgstoragenewnumber = [] // новое значение массива
-let a = 0
+let a = 0 // указывает сколько нужно добавить картинок
 
 
 let galerystorage = document.querySelector("#board .galerystorage"); // Получает свойства объекта родительского div
@@ -15,26 +14,37 @@ let heightparent = galerystorage.offsetHeight; // Получает высоту 
 
 // Правая кнопка
 function Right(){
-    DeleteOldImg
-    a = imgstorage.length - Math.max(imgstoragenewnumber.id)
-    if (a > 4){
+    DeleteOldImg()
+    a = imgstorage.length - 1 - imgstoragenewnumber.id
+    if(imgstoragenewnumber.id == imgstorage.length - 1){
+      a = imgstorage.length
+      if(a > 4){
         a = 4
-       imgstoragenewnumber = imgstorage[0]
-        for( let i=0; i<a;i++){
+        for(i=0;i<a;i++){
+            imgstoragenewnumber = imgstorage[i]
             CreateNewImg()
-            imgstorageoldnumber.push(imgstoragenewnumber.id + 1)
-        }
-        delete imgstoragenewnumber
+            imgstorageoldnumber.push(imgstoragenewnumber)
+         }
+      }
+      else{
+        for(i=0;i<a;i++){
+            imgstoragenewnumber = imgstorage[i]
+            CreateNewImg()
+            imgstorageoldnumber.push(imgstoragenewnumber)
+         }
+      }
     }
     else{
-        for (let i=0; i<a;i++){
-            imgstoragenewnumber = imgstorage[imgstoragenewnumber.id + 1]
-            CreateNewImg()
-            imgstorageoldnumber.push(imgstoragenewnumber.id + 1)
+        for(i=0;i<a;i++){
+           imgstoragenewnumber = imgstorage[imgstoragenewnumber.id + 1]
+           CreateNewImg()
+           imgstorageoldnumber.push(imgstoragenewnumber)
         }
-        delete imgstoragenewnumber
     }
-
+}
+function Left(){
+    DeleteOldImg()
+    a = imgstorage.length - 1 - imgstoragenewnumber
 }
 
 // Создает новый объект img
@@ -52,18 +62,13 @@ function CreateNewImg(){
 }
 // Удаляет старые объект img 
 function DeleteOldImg(){
+    imgstoragenewnumber.length = 0
     for(let i=0; i<imgstorageoldnumber.length; i++){
     let galleryStorage = document.getElementById("galerystorage");
-    let imgtoremove = document.getElementById(imgstorageoldnumber[i]);
+    let imgtoremove = document.getElementById(imgstorageoldnumber[i].id);
     galleryStorage.removeChild(imgtoremove);
     }
-    imgstoragenewnumber.id = Math.max(imgstorageoldnumber.id)
-    if(imgstoragenewnumber.id == 0){
-        imgstoragenewnumber.id = imgstorage.length
-    }
-    if(imgstoragenewnumber.id == imgstorage.length){
-        imgstoragenewnumber.id = 0
-    }
+    imgstoragenewnumber = imgstorageoldnumber[imgstorageoldnumber.length - 1]
     imgstorageoldnumber.length = 0
 }
 
@@ -72,15 +77,10 @@ function Beginning(){
     for( let i=0; i<4;i++){ 
         imgstoragenewnumber = imgstorage[i]
         CreateNewImg()
-        imgstorageoldnumber.push(imgstoragenewnumber.id)
+        imgstorageoldnumber.push(imgstoragenewnumber)
     }
-    delete imgstoragenewnumber
+    imgstoragenewnumber.length = 0
 }
-
-
-
-
-
 
 
 
